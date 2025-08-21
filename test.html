@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Calculador de Pontos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        button {
+            background: #64b5f6;
+            color: white;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(100,181,246,0.2);
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste - Calculador de Pontos</h1>
+        <p>Cada ponto = 2 segundos</p>
+        
+        <input type="text" id="points" placeholder="Digite pontos ou números">
+        <button onclick="calculate()">Calcular</button>
+        
+        <div id="result">
+            <h3>Resultado:</h3>
+            <p id="timeResult">0 segundos</p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('points').value;
+            const result = document.getElementById('result');
+            const timeResult = document.getElementById('timeResult');
+            
+            console.log('Input:', input);
+            
+            // Limpar e contar pontos
+            const cleanInput = input.replace(/[^\d•]/g, '');
+            console.log('Input limpo:', cleanInput);
+            
+            let pointCount = 0;
+            
+            if (/^\d+$/.test(cleanInput)) {
+                pointCount = parseInt(cleanInput);
+                console.log('Usando número:', pointCount);
+            } else {
+                pointCount = (cleanInput.match(/•/g) || []).length;
+                console.log('Contando pontos:', pointCount);
+            }
+            
+            const seconds = pointCount * 2;
+            console.log('Segundos:', seconds);
+            
+            timeResult.textContent = seconds + ' segundos';
+            result.style.display = 'block';
+        }
+        
+        // Teste automático
+        console.log('Página carregada!');
+        document.getElementById('points').addEventListener('input', function() {
+            console.log('Input alterado:', this.value);
+        });
+    </script>
+</body>
+</html>

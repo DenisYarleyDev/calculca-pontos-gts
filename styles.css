@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #64b5f6, #42a5f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    text-align: center;
+    color: #b0bec5;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #e3f2fd;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #64b5f6;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+}
+
+input::placeholder {
+    color: #90a4ae;
+}
+
+.input-help {
+    color: #90a4ae;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #64b5f6, #42a5f5);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 181, 246, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result-section {
+    margin-bottom: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-card {
+    background: rgba(100, 181, 246, 0.1);
+    border: 1px solid rgba(100, 181, 246, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+.result-card h2 {
+    color: #64b5f6;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.time-display {
+    margin-bottom: 10px;
+}
+
+#timeResult {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+}
+
+.unit {
+    font-size: 1.2rem;
+    color: #b0bec5;
+    margin-left: 10px;
+}
+
+.formatted-time {
+    color: #90a4ae;
+    font-size: 1rem;
+}
+
+.examples {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+}
+
+.examples h3 {
+    color: #e3f2fd;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.example-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.example-item:last-child {
+    border-bottom: none;
+}
+
+.example-points {
+    color: #64b5f6;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.example-time {
+    color: #b0bec5;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #timeResult {
+        font-size: 2.5rem;
+    }
+    
+    .example-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
