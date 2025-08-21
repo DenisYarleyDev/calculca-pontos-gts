@@ -10,52 +10,102 @@
     <div class="container">
         <div class="card">
             <h1>⏱️ Calculador de Pontos GTS</h1>
-            <p class="subtitle">Cada ponto = 2 segundos</p>
             
-            <div class="input-section">
-                <label for="points">Digite os pontos:</label>
-                <input 
-                    type="text" 
-                    id="points" 
-                    placeholder="Ex: ... ou 5"
-                    autocomplete="off"
-                >
-                <p class="input-help">Aceita: números (5) ou pontos finais (...)</p>
-                <button id="calculate">Calcular Tempo</button>
+            <!-- Sistema de Abas -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="points">Calculador de Pontos</button>
+                <button class="tab-btn" data-tab="timeout">Contador Timeout</button>
             </div>
             
-            <div class="result-section" id="result" style="display: none;">
-                <div class="result-card">
-                    <h2>Resultado</h2>
-                    <div class="time-display">
-                        <span id="timeResult">0</span>
-                        <span class="unit">segundos</span>
+            <!-- Aba 1: Calculador de Pontos -->
+            <div class="tab-content active" id="points-tab">
+                <p class="subtitle">Cada ponto = 2 segundos</p>
+                
+                <div class="input-section">
+                    <label for="points">Digite os pontos:</label>
+                    <input 
+                        type="text" 
+                        id="points" 
+                        placeholder="Ex: ... ou 5"
+                        autocomplete="off"
+                    >
+                    <p class="input-help">Aceita: números (5) ou pontos finais (...)</p>
+                    <button id="calculate">Calcular Tempo</button>
+                </div>
+                
+                <div class="result-section" id="result" style="display: none;">
+                    <div class="result-card">
+                        <h2>Resultado</h2>
+                        <div class="time-display">
+                            <span id="timeResult">0</span>
+                            <span class="unit">segundos</span>
+                        </div>
+                        <div class="formatted-time" id="formattedTime"></div>
                     </div>
-                    <div class="formatted-time" id="formattedTime"></div>
+                </div>
+                
+                <div class="examples">
+                    <h3>Exemplos:</h3>
+                    <div class="example-item">
+                        <span class="example-points">...</span>
+                        <span class="example-time">= 6 segundos</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-points">....</span>
+                        <span class="example-time">= 8 segundos</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-points">.....</span>
+                        <span class="example-time">= 10 segundos</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-points">5</span>
+                        <span class="example-time">= 10 segundos</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-points">..........</span>
+                        <span class="example-time">= 20 segundos</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="examples">
-                <h3>Exemplos:</h3>
-                <div class="example-item">
-                    <span class="example-points">...</span>
-                    <span class="example-time">= 6 segundos</span>
+            <!-- Aba 2: Contador de Timeout -->
+            <div class="tab-content" id="timeout-tab">
+                <p class="subtitle">Conta quantas vezes "Request time out" aparece</p>
+                
+                <div class="input-section">
+                    <label for="timeout-text">Cole o texto do ping:</label>
+                    <textarea 
+                        id="timeout-text" 
+                        placeholder="Cole aqui o resultado do comando ping..."
+                        rows="10"
+                    ></textarea>
+                    <p class="input-help">Cole o texto completo do comando ping para contar os timeouts</p>
+                    <button id="count-timeout">Contar Timeouts</button>
                 </div>
-                <div class="example-item">
-                    <span class="example-points">....</span>
-                    <span class="example-time">= 8 segundos</span>
+                
+                <div class="result-section" id="timeout-result" style="display: none;">
+                    <div class="result-card">
+                        <h2>Resultado</h2>
+                        <div class="timeout-display">
+                            <span id="timeout-count">0</span>
+                            <span class="unit">timeouts</span>
+                        </div>
+                        <div class="timeout-info" id="timeout-info"></div>
+                    </div>
                 </div>
-                <div class="example-item">
-                    <span class="example-points">.....</span>
-                    <span class="example-time">= 10 segundos</span>
-                </div>
-                <div class="example-item">
-                    <span class="example-points">5</span>
-                    <span class="example-time">= 10 segundos</span>
-                </div>
-                <div class="example-item">
-                    <span class="example-points">..........</span>
-                    <span class="example-time">= 20 segundos</span>
+                
+                <div class="examples">
+                    <h3>Exemplo de uso:</h3>
+                    <div class="example-text">
+                        <p>Cole o resultado de um comando ping como:</p>
+                        <pre>PING 172.16.32.69: 56 data bytes
+Reply from 172.16.32.69: bytes=56 time=40 ms
+Request time out
+Request time out
+Reply from 172.16.32.69: bytes=56 time=39 ms</pre>
+                        <p>O sistema contará automaticamente as ocorrências de "Request time out"</p>
+                    </div>
                 </div>
             </div>
         </div>
